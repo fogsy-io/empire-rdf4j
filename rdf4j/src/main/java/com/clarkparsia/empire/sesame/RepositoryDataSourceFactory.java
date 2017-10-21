@@ -16,26 +16,25 @@
 package com.clarkparsia.empire.sesame;
 
 import com.clarkparsia.empire.config.ConfigKeys;
-import com.clarkparsia.empire.ds.DataSourceFactory;
+import com.clarkparsia.empire.ds.Alias;
 import com.clarkparsia.empire.ds.DataSource;
 import com.clarkparsia.empire.ds.DataSourceException;
-import com.clarkparsia.empire.ds.Alias;
-
-import java.net.MalformedURLException;
-import java.util.Map;
-import java.io.File;
-import java.io.FileInputStream;
-
+import com.clarkparsia.empire.ds.DataSourceFactory;
 import com.google.common.base.Splitter;
-import org.eclipse.rdf4j.repository.util.RDFInserter;
-import org.eclipse.rdf4j.sail.memory.MemoryStore;
-import org.eclipse.rdf4j.repository.sail.SailRepository;
 import org.eclipse.rdf4j.repository.Repository;
-import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.repository.http.HTTPRepository;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.repository.util.RDFInserter;
 import org.eclipse.rdf4j.rio.RDFParser;
 import org.eclipse.rdf4j.rio.Rio;
+import org.eclipse.rdf4j.sail.memory.MemoryStore;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.net.MalformedURLException;
+import java.util.Map;
 
 /**
  * <p>Implementation of the {@link DataSourceFactory} interface for creating Sesame 2.x Repository objects.</p>
@@ -78,7 +77,6 @@ public final class RepositoryDataSourceFactory implements DataSourceFactory, Rep
 			}
 			else if (aURL != null && aRepo != null) {
 				aRepository = new HTTPRepository(aURL.toString(), aRepo.toString());
-
 				aRepository.initialize();
 			}
 			else if (aFiles != null) {

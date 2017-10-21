@@ -6,7 +6,7 @@
     <!-- The Basics -->
     <groupId>com.clarkparsia.empire.sp</groupId>
     <artifactId>empire-parent</artifactId>
-    <version>1.1</version>
+    <version>1.4-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
         <rdf4j.version>2.2.2</rdf4j.version>
@@ -148,8 +148,6 @@
                 </configuration>
             </plugin>
         </plugins>
-
-
     </build>
 
 
@@ -158,17 +156,6 @@
         <developerConnection>scm:git:ssh://git@ipe-wim-gitlab.fzi.de:2222/streampipes/empire.git
         </developerConnection>
     </scm>
-
-    <repositories>
-        <repository>
-            <id>Mygrid</id>
-            <url>http://www.mygrid.org.uk/maven/repository</url>
-        </repository>
-        <repository>
-            <id>Jboss</id>
-            <url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases</url>
-        </repository>
-    </repositories>
 
     <distributionManagement>
         <repository>

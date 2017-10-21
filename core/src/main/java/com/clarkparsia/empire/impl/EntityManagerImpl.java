@@ -15,80 +15,66 @@
 
 package com.clarkparsia.empire.impl;
 
-import com.clarkparsia.empire.ds.DataSourceException;
-import com.clarkparsia.empire.ds.MutableDataSource;
-import com.clarkparsia.empire.ds.SupportsNamedGraphs;
-import com.clarkparsia.empire.SupportsRdfId;
-import com.clarkparsia.empire.ds.SupportsTransactions;
-import com.clarkparsia.empire.ds.DataSourceUtil;
-import com.clarkparsia.empire.ds.QueryException;
-import com.clarkparsia.empire.ds.impl.TransactionalDataSource;
+import static com.clarkparsia.empire.util.BeanReflectUtil.*;
+
 import com.clarkparsia.empire.Empire;
 import com.clarkparsia.empire.EmpireException;
 import com.clarkparsia.empire.EmpireGenerated;
 import com.clarkparsia.empire.EmpireOptions;
-
+import com.clarkparsia.empire.SupportsRdfId;
+import com.clarkparsia.empire.annotation.AnnotationChecker;
 import com.clarkparsia.empire.annotation.InvalidRdfException;
 import com.clarkparsia.empire.annotation.RdfGenerator;
 import com.clarkparsia.empire.annotation.RdfsClass;
-import com.clarkparsia.empire.annotation.AnnotationChecker;
-
+import com.clarkparsia.empire.ds.DataSourceException;
+import com.clarkparsia.empire.ds.DataSourceUtil;
+import com.clarkparsia.empire.ds.MutableDataSource;
+import com.clarkparsia.empire.ds.QueryException;
+import com.clarkparsia.empire.ds.SupportsNamedGraphs;
+import com.clarkparsia.empire.ds.SupportsTransactions;
+import com.clarkparsia.empire.ds.impl.TransactionalDataSource;
+import com.clarkparsia.empire.util.BeanReflectUtil;
+import com.clarkparsia.empire.util.EmpireUtil;
 import com.complexible.common.openrdf.model.Models2;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import org.eclipse.rdf4j.model.Model;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.AccessibleObject;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.URI;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
+import java.util.function.Predicate;
+
+import javax.persistence.Entity;
 import javax.persistence.EntityExistsException;
+import javax.persistence.EntityListeners;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.EntityTransaction;
 import javax.persistence.FlushModeType;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceException;
-import javax.persistence.Query;
-
-import javax.persistence.Entity;
-import javax.persistence.PrePersist;
-import javax.persistence.EntityListeners;
+import javax.persistence.PostLoad;
 import javax.persistence.PostPersist;
 import javax.persistence.PostRemove;
 import javax.persistence.PostUpdate;
-import javax.persistence.PostLoad;
+import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
-
-import java.lang.annotation.Annotation;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.AccessibleObject;
-
-import java.util.Map;
-import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.HashSet;
-import java.util.Collections;
-import java.util.WeakHashMap;
-import java.util.Set;
-
-import java.net.URI;
-import java.util.function.Predicate;
-
-import static com.clarkparsia.empire.util.BeanReflectUtil.getAnnotatedFields;
-import static com.clarkparsia.empire.util.BeanReflectUtil.getAnnotatedGetters;
-import static com.clarkparsia.empire.util.BeanReflectUtil.asSetter;
-import static com.clarkparsia.empire.util.BeanReflectUtil.safeGet;
-import static com.clarkparsia.empire.util.BeanReflectUtil.safeSet;
-import static com.clarkparsia.empire.util.BeanReflectUtil.hasAnnotation;
-import static com.clarkparsia.empire.util.BeanReflectUtil.getAnnotatedMethods;
-
-import com.clarkparsia.empire.util.EmpireUtil;
-import com.clarkparsia.empire.util.BeanReflectUtil;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.persistence.Query;
 
 /**
  * <p>Implementation of the JPA {@link EntityManager} interface to support the persistence model over
@@ -382,6 +368,7 @@ public final class EntityManagerImpl implements EntityManager {
 			throw new IllegalStateException(ex);
 		}
 		catch (DataSourceException ex) {
+			ex.printStackTrace();
 			throw new PersistenceException(ex);
 		}
 		catch (RuntimeException e) {

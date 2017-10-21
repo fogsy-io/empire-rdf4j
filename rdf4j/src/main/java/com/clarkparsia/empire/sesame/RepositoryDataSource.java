@@ -39,6 +39,8 @@ import org.eclipse.rdf4j.query.TupleQueryResult;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.Rio;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -167,8 +169,9 @@ public final class RepositoryDataSource extends AbstractDataSource implements Mu
 			setConnected(true);
 			try {
 				mConnection = mRepository.getConnection();
+				mConnection.setParserConfig(Rio.createParser(RDFFormat.BINARY).getParserConfig());
 
-				mConnection.setAutoCommit(false);
+				//mConnection.setAutoCommit(false);
 			}
 			catch (RepositoryException e) {
 				throw (ConnectException) new ConnectException("There was an error establishing the connection").initCause(e);
@@ -310,12 +313,12 @@ public final class RepositoryDataSource extends AbstractDataSource implements Mu
 	public void begin() throws DataSourceException {
 		assertConnected();
 
-//        try {
-//            mConnection.begin();
-//        }
-//        catch (RepositoryException e) {
-//            throw new DataSourceException(e);
-//        }
+        try {
+            mConnection.begin();
+        }
+        catch (RepositoryException e) {
+            throw new DataSourceException(e);
+        }
     }
 
 	/**
