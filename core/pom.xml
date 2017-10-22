@@ -3,7 +3,7 @@
     <parent>
         <groupId>com.clarkparsia.empire.sp</groupId>
         <artifactId>empire-parent</artifactId>
-        <version>1.4-SNAPSHOT</version>
+        <version>1.6-SNAPSHOT</version>
     </parent>
     <artifactId>core</artifactId>
 
@@ -14,7 +14,6 @@
             <artifactId>javassist</artifactId>
             <version>3.19.0-GA</version>
         </dependency>
-
         <dependency>
             <groupId>org.ow2.spec.ee</groupId>
             <artifactId>ow2-jpa-1.0-spec</artifactId>
@@ -73,12 +72,12 @@
         <dependency>
             <groupId>com.clarkparsia.empire.sp</groupId>
             <artifactId>cp-common-utils</artifactId>
-            <version>1.4-SNAPSHOT</version>
+            <version>1.6-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.clarkparsia.empire.sp</groupId>
             <artifactId>cp-openrdf-utils</artifactId>
-            <version>1.4-SNAPSHOT</version>
+            <version>1.6-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

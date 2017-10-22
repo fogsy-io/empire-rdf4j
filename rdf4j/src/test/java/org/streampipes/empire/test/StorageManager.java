@@ -7,13 +7,10 @@ import com.clarkparsia.empire.config.EmpireConfiguration;
 import com.clarkparsia.empire.sesame.OpenRdfEmpireModule;
 import com.clarkparsia.empire.sesame.RepositoryFactoryKeys;
 import org.eclipse.rdf4j.repository.Repository;
-import org.eclipse.rdf4j.repository.config.RepositoryConfig;
-import org.eclipse.rdf4j.repository.http.HTTPRepository;
 import org.eclipse.rdf4j.repository.manager.RemoteRepositoryManager;
-import org.eclipse.rdf4j.repository.sail.config.SailRepositoryConfig;
-import org.eclipse.rdf4j.sail.config.SailImplConfig;
-import org.eclipse.rdf4j.sail.inferencer.fc.config.ForwardChainingRDFSInferencerConfig;
-import org.eclipse.rdf4j.sail.memory.config.MemoryStoreConfig;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
+import org.eclipse.rdf4j.sail.inferencer.fc.SchemaCachingRDFSInferencer;
+import org.eclipse.rdf4j.sail.memory.MemoryStore;
 import org.streampipes.model.transform.CustomAnnotationProvider;
 
 import java.util.HashMap;
@@ -35,7 +32,7 @@ public enum StorageManager {
   private boolean inMemoryInitialized = false;
 
   String sesameUrl = "http://localhost:8030/rdf4j-server";
-  String sesameDbName = "streampipes-inmemory-delay-rdfs";
+  String sesameDbName = "streampipes-inmemory-delay-rdfs-sc2";
 
   StorageManager() {
     initSesameDatabases();
@@ -52,20 +49,23 @@ public enum StorageManager {
 
       RemoteRepositoryManager manager = new RemoteRepositoryManager(sesameUrl);
       manager.initialize();
-      RepositoryConfig config = new RepositoryConfig(sesameDbName, "StreamPipes DB");
-      SailImplConfig backendConfig = new MemoryStoreConfig(true, 10000);
-      backendConfig = new ForwardChainingRDFSInferencerConfig(backendConfig);
-      config.setRepositoryImplConfig(new SailRepositoryConfig(backendConfig));
-      manager.addRepositoryConfig(config);
+      //RepositoryConfig config = new RepositoryConfig(sesameDbName, "StreamPipes DB");
+      //SailImplConfig backendConfig = new MemoryStoreConfig(true, 10000);
+      //backendConfig = new ForwardChainingRDFSInferencerConfig(backendConfig);
+      //config.setRepositoryImplConfig(new SailRepositoryConfig(backendConfig));
+      //manager.addRepositoryConfig(config);
 
-            repository = new HTTPRepository(sesameUrl,
-                    sesameDbName);
-            repository.initialize();
+//            repository = new HTTPRepository(sesameUrl,
+//                    sesameDbName);
+//            repository.initialize();
 
 
       // performance is magnitudes faster
-      //repository = new SailRepository(new MemoryStore());
-      //repository.initialize();
+      MemoryStore memoryStore = new MemoryStore();
+      memoryStore.setPersist(true);
+      memoryStore.setSyncDelay(1000);
+      repository = new SailRepository(new SchemaCachingRDFSInferencer(memoryStore));
+      repository.initialize();
       //conn = repository.getConnection();
 
       initEmpire();
