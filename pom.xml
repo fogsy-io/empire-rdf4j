@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- The Basics -->
-    <groupId>com.clarkparsia.empire.sp</groupId>
-    <artifactId>empire-parent</artifactId>
+    <groupId>org.streampipes.empire</groupId>
+    <artifactId>streampipes-empire-parent</artifactId>
     <version>1.6-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
@@ -72,11 +72,11 @@
     </dependencyManagement>
 
     <modules>
-        <module>core</module>
-        <module>reflections</module>
-        <module>rdf4j</module>
-        <module>cp-common-utils</module>
-        <module>cp-openrdf-utils</module>
+        <module>streampipes-empire-core</module>
+        <module>streampipes-empire-reflections</module>
+        <module>streampipes-empire-rdf4j</module>
+        <module>streampipes-empire-cp-common-utils</module>
+        <module>streampipes-empire-cp-openrdf-utils</module>
     </modules>
 
     <!-- Build Settings -->
