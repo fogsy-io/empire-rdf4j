@@ -15,10 +15,10 @@
 
 package org.streampipes.empire.core.empire.util;
 
-import org.streampipes.empire.core.empire.annotation.RdfProperty;
+import org.streampipes.empire.annotations.RdfProperty;
 import org.streampipes.empire.core.empire.annotation.InvalidRdfException;
-import org.streampipes.empire.core.empire.annotation.RdfId;
-import org.streampipes.empire.core.empire.annotation.RdfsClass;
+import org.streampipes.empire.annotations.RdfId;
+import org.streampipes.empire.annotations.RdfsClass;
 import org.streampipes.empire.core.empire.EmpireOptions;
 import org.streampipes.empire.core.empire.SupportsRdfId;
 import org.streampipes.empire.core.empire.EmpireGenerated;

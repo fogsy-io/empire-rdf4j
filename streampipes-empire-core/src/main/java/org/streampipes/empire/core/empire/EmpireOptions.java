@@ -15,7 +15,7 @@
 
 package org.streampipes.empire.core.empire;
 
-import org.streampipes.empire.core.empire.annotation.RdfProperty;
+import org.streampipes.empire.annotations.RdfProperty;
 
 /**
  * <p>Catch-all class for global Empire options and configuration</p>

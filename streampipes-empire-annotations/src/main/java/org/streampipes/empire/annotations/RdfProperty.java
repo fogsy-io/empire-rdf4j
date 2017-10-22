@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package org.streampipes.empire.core.empire.annotation;
+package org.streampipes.empire.annotations;
 
 import java.lang.annotation.Target;
 import java.lang.annotation.Retention;

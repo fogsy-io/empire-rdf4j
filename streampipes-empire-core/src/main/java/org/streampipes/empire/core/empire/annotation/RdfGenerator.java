@@ -15,6 +15,10 @@
 
 package org.streampipes.empire.core.empire.annotation;
 
+import org.streampipes.empire.annotations.Namespaces;
+import org.streampipes.empire.annotations.RdfId;
+import org.streampipes.empire.annotations.RdfProperty;
+import org.streampipes.empire.annotations.RdfsClass;
 import org.streampipes.empire.core.empire.Dialect;
 import org.streampipes.empire.core.empire.Empire;
 import org.streampipes.empire.core.empire.EmpireGenerated;

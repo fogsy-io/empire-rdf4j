@@ -13,43 +13,36 @@
  * limitations under the License.
  */
 
-package org.streampipes.empire.core.empire.annotation;
+package org.streampipes.empire.annotations;
 
 import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <p>Key-value pairs of qname & uri to specify the namespaces used during annotation of an object or
- * set of objects.  There must be an even number of elements in the array, and they are grabbed in pairs, ie 0 & 1,
- * 1 & 2, etc.  The first element of the pair is assumed to be the qname and the other the URI.</p>
+ * <p>Annotation used to specify the rdf:type of the individual corresponding to instances of the Java class.</p>
  * <p>
- * Usage:<br/>
- * <code>
- * &#64;Namespaces({"", "http://xmlns.com/foaf/0.1/",
- *			 "foaf", "http://xmlns.com/foaf/0.1/",
- * 		     "dc", "http://purl.org/dc/elements/1.1/"})
- * public class MyClass {
- *  ...
- * 	&#64;RdfProperty("foaf:firstName")
- *  public String firstName;
+ * Usage:
+ * <code><pre>
+ * &#64;RdfClass("foaf:Person")
+ * public class Foo implements SupportsRdfId {
+ *   ...
  * }
- * </code>
+ * </pre></code>
  * </p>
+ * <p>All resulting instances of the class Foo will be typed as a foaf:Person.</p>
  *
  * @author Michael Grove
  * @since 0.1
  */
-@Inherited
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Namespaces {
+public @interface RdfsClass {
 
 	/**
-	 * The array of namespace prefixes and uri's.
-	 * @return the namespaces
+	 * The URI value of the class this object will be typed as
+	 * @return the URI (or qname) of the class
 	 */
-	public String[] value();
+	public String value();
 }

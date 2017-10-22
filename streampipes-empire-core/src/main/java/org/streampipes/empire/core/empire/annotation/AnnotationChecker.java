@@ -15,6 +15,7 @@
 
 package org.streampipes.empire.core.empire.annotation;
 
+import org.streampipes.empire.annotations.RdfsClass;
 import org.streampipes.empire.core.empire.util.BeanReflectUtil;
 import org.streampipes.empire.core.empire.SupportsRdfId;
 import org.streampipes.empire.core.empire.EmpireException;

@@ -15,8 +15,8 @@
 
 package org.streampipes.empire.core.empire.util;
 
-import org.streampipes.empire.core.empire.annotation.RdfsClass;
-import org.streampipes.empire.core.empire.annotation.NamedGraph;
+import org.streampipes.empire.annotations.RdfsClass;
+import org.streampipes.empire.annotations.NamedGraph;
 import org.streampipes.empire.core.empire.annotation.SupportsRdfIdImpl;
 import org.streampipes.empire.core.empire.annotation.RdfGenerator;
 import org.streampipes.empire.core.empire.annotation.AnnotationChecker;

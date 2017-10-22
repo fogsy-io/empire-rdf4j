@@ -21,7 +21,7 @@ import org.streampipes.empire.core.empire.util.DefaultEmpireModule;
 import org.streampipes.empire.core.empire.util.EmpireModule;
 import org.streampipes.empire.core.empire.config.EmpireConfiguration;
 import org.streampipes.empire.core.empire.annotation.RdfGenerator;
-import org.streampipes.empire.core.empire.annotation.RdfsClass;
+import org.streampipes.empire.annotations.RdfsClass;
 
 import org.streampipes.empire.cp.common.utils.util.PrefixMapping;
 

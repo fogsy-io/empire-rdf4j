@@ -23,7 +23,7 @@ import org.streampipes.empire.core.empire.SupportsRdfId;
 import org.streampipes.empire.core.empire.annotation.AnnotationChecker;
 import org.streampipes.empire.core.empire.annotation.InvalidRdfException;
 import org.streampipes.empire.core.empire.annotation.RdfGenerator;
-import org.streampipes.empire.core.empire.annotation.RdfsClass;
+import org.streampipes.empire.annotations.RdfsClass;
 import org.streampipes.empire.core.empire.ds.DataSourceException;
 import org.streampipes.empire.core.empire.ds.DataSourceUtil;
 import org.streampipes.empire.core.empire.ds.MutableDataSource;

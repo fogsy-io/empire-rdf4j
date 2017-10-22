@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.streampipes.empire</groupId>
         <artifactId>streampipes-empire-parent</artifactId>
-        <version>1.6-SNAPSHOT</version>
+        <version>1.7-SNAPSHOT</version>
     </parent>
     <artifactId>streampipes-empire-core</artifactId>
 
@@ -72,12 +72,17 @@
         <dependency>
             <groupId>org.streampipes.empire</groupId>
             <artifactId>streampipes-empire-cp-common-utils</artifactId>
-            <version>1.6-SNAPSHOT</version>
+            <version>1.7-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.streampipes.empire</groupId>
             <artifactId>streampipes-empire-cp-openrdf-utils</artifactId>
-            <version>1.6-SNAPSHOT</version>
+            <version>1.7-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.streampipes.empire</groupId>
+            <artifactId>streampipes-empire-annotations</artifactId>
+            <version>1.7-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

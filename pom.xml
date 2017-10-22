@@ -6,7 +6,7 @@
     <!-- The Basics -->
     <groupId>org.streampipes.empire</groupId>
     <artifactId>streampipes-empire-parent</artifactId>
-    <version>1.6-SNAPSHOT</version>
+    <version>1.7-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
         <rdf4j.version>2.2.2</rdf4j.version>
@@ -77,6 +77,7 @@
         <module>streampipes-empire-rdf4j</module>
         <module>streampipes-empire-cp-common-utils</module>
         <module>streampipes-empire-cp-openrdf-utils</module>
+        <module>streampipes-empire-annotations</module>
     </modules>
 
     <!-- Build Settings -->
