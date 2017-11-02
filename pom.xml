@@ -6,7 +6,7 @@
     <!-- The Basics -->
     <groupId>org.streampipes.empire</groupId>
     <artifactId>streampipes-empire-parent</artifactId>
-    <version>1.7-SNAPSHOT</version>
+    <version>1.8-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
         <rdf4j.version>2.2.2</rdf4j.version>
@@ -68,6 +68,36 @@
                 <artifactId>rdf4j-sail-memory</artifactId>
                 <version>${rdf4j.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.streampipes.empire</groupId>
+                <artifactId>streampipes-empire-cp-common-utils</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.streampipes.empire</groupId>
+                <artifactId>streampipes-empire-cp-openrdf-utils</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.streampipes.empire</groupId>
+                <artifactId>streampipes-empire-annotations</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.streampipes.empire</groupId>
+                <artifactId>streampipes-empire-pinto</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.streampipes.empire</groupId>
+                <artifactId>streampipes-empire-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.streampipes.empire</groupId>
+                <artifactId>streampipes-empire-reflections</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -78,6 +108,7 @@
         <module>streampipes-empire-cp-common-utils</module>
         <module>streampipes-empire-cp-openrdf-utils</module>
         <module>streampipes-empire-annotations</module>
+        <module>streampipes-empire-pinto</module>
     </modules>
 
     <!-- Build Settings -->

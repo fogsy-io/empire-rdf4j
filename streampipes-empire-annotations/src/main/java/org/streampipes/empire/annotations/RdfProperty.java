@@ -74,4 +74,6 @@ public @interface RdfProperty {
 	 * @return whether or not java.net.URI objects should be treated as xsd:anyURI typed literal values.
 	 */
 	public boolean isXsdUri() default false;
+
+	public String datatype() default "";
 }
