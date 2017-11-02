@@ -189,6 +189,21 @@
         </developerConnection>
     </scm>
 
+    <repositories>
+        <repository>
+            <id>laus</id>
+            <name>nexus repository</name>
+            <url>http://laus.fzi.de/nexus/content/repositories/public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <distributionManagement>
         <repository>
             <id>deployment</id>
