@@ -127,9 +127,9 @@ public enum StorageManager {
     return storageManager;
   }
 
-  public StorageRequests getSesameStorage() {
-    return new SesameStorageRequests();
-  }
+  //public StorageRequests getSesameStorage() {
+  //  return new SesameStorageRequests();
+  //}
 
 
 }
