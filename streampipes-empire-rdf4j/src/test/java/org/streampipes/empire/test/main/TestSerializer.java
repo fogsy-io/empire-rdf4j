@@ -11,6 +11,7 @@ import org.streampipes.commons.Utils;
 import org.streampipes.empire.pinto.MappingOptions;
 import org.streampipes.empire.pinto.RDFMapper;
 import org.streampipes.empire.test.HttpJsonParser;
+import org.streampipes.empire.test.StorageManager;
 import org.streampipes.model.impl.graph.SepaDescription;
 import org.streampipes.model.transform.CustomAnnotationProvider;
 import org.streampipes.model.vocabulary.SEPA;
@@ -21,11 +22,12 @@ import java.io.InputStream;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
+import java.util.List;
 
 public class TestSerializer {
 
   public static void main(String[] args) throws IOException {
-    String jsonld = HttpJsonParser.getContentFromUrl(URI.create("http://ipe-koi04.fzi.de:8090/sepa/textfilter"));
+    String jsonld = HttpJsonParser.getContentFromUrl(URI.create("http://localhost:8090/sepa/textfilter"));
 
     InputStream stream = new ByteArrayInputStream(
             jsonld.getBytes(StandardCharsets.UTF_8));
@@ -49,6 +51,11 @@ public class TestSerializer {
             .writeValue(description);
 
     System.out.println(Utils.asString(graph));
+
+    StorageManager.INSTANCE.getSesameStorage().storeSEPA(description);
+
+    List<SepaDescription> sepas = StorageManager.INSTANCE.getSesameStorage().getAllSEPAs();
+    System.out.println(sepas.size());
   }
 
   private static Resource getResource(Model statements) {

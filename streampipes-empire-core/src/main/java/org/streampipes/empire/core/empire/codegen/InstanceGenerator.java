@@ -16,41 +16,38 @@
 package org.streampipes.empire.core.empire.codegen;
 
 import com.google.common.collect.Sets;
+import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.CtClass;
-import javassist.CtNewConstructor;
 import javassist.CtField;
-import javassist.CtNewMethod;
-import javassist.NotFoundException;
-import javassist.Modifier;
-import javassist.CannotCompileException;
 import javassist.CtMethod;
+import javassist.CtNewConstructor;
+import javassist.CtNewMethod;
 import javassist.CtPrimitiveType;
 import javassist.LoaderClassPath;
-import javassist.bytecode.ConstPool;
+import javassist.Modifier;
+import javassist.NotFoundException;
 import javassist.bytecode.AnnotationsAttribute;
+import javassist.bytecode.ConstPool;
 import javassist.bytecode.SignatureAttribute;
 import javassist.bytecode.annotation.Annotation;
-
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Arrays;
-import java.util.Collection;
-
-import java.lang.reflect.Method;
-import java.lang.reflect.Type;
-import java.util.function.Predicate;
-
-import org.streampipes.empire.core.empire.EmpireGenerated;
-import org.streampipes.empire.core.empire.SupportsRdfId;
-import org.streampipes.empire.core.empire.EmpireOptions;
-import org.streampipes.empire.core.empire.util.BeanReflectUtil;
-
 import org.eclipse.rdf4j.model.Model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.streampipes.empire.core.empire.EmpireGenerated;
+import org.streampipes.empire.core.empire.EmpireOptions;
+import org.streampipes.empire.core.empire.SupportsRdfId;
+import org.streampipes.empire.core.empire.util.BeanReflectUtil;
 import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 import sun.reflect.generics.reflectiveObjects.WildcardTypeImpl;
+
+import java.lang.reflect.Method;
+import java.lang.reflect.Type;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Predicate;
 
 /**
  * <p>Generate implementations of interfaces at runtime via bytecode manipulation.</p>
@@ -135,22 +132,23 @@ public final class InstanceGenerator {
 		aClass.addField(aInterfaceField, CtField.Initializer.byExpr(theInterface.getName() + ".class;"));
 		
 		CtField aAllTriplesField = new CtField(aPool.get(Model.class.getName()), "mAllTriples", aClass);
-		aClass.addField(aAllTriplesField, CtField.Initializer.byExpr("com.complexible.common.openrdf.model.Models2.newModel();"));
+		aClass.addField(aAllTriplesField, CtField.Initializer.byExpr("org.streampipes.empire.cp.openrdf.utils.model.Models2.newModel();"));
 		
 		CtField aInstanceTriplesField = new CtField(aPool.get(Model.class.getName()), "mInstanceTriples", aClass);
-		aClass.addField(aInstanceTriplesField, CtField.Initializer.byExpr("com.complexible.common.openrdf.model.Models2.newModel();"));
+		aClass.addField(aInstanceTriplesField, CtField.Initializer.byExpr("org.streampipes.empire.cp.openrdf.utils.model.Models2.newModel();"));
 		
 		aClass.addConstructor(CtNewConstructor.defaultConstructor(aClass));
 		
 		CtField aIdField = new CtField(aPool.get(SupportsRdfId.class.getName()), "supportsId", aClass);
-		aClass.addField(aIdField, CtField.Initializer.byExpr("new com.clarkparsia.empire.annotation.SupportsRdfIdImpl();"));		
+		aClass.addField(aIdField, CtField.Initializer.byExpr("new org.streampipes.empire.core.empire.annotation.SupportsRdfIdImpl();"));
 		
 		if (!hasMethod(aClass, "getRdfId")) {
-			aClass.addMethod(CtNewMethod.make("public com.clarkparsia.empire.SupportsRdfId.RdfKey getRdfId() { return supportsId.getRdfId(); } ", aClass));
+			aClass.addMethod(CtNewMethod.make("public org.streampipes.empire.core.empire.SupportsRdfId.RdfKey getRdfId() { return supportsId.getRdfId(); } " +
+							"", aClass));
 		}
 
 		if (!hasMethod(aClass, "setRdfId")) {
-			aClass.addMethod(CtNewMethod.make("public void setRdfId(com.clarkparsia.empire.SupportsRdfId.RdfKey theURI) { supportsId.setRdfId(theURI); } ", aClass));
+			aClass.addMethod(CtNewMethod.make("public void setRdfId(org.streampipes.empire.core.empire.SupportsRdfId.RdfKey theURI) { supportsId.setRdfId(theURI); } ", aClass));
 		}		
 		
 		generateMethods(theInterface, aPool, aClass);
@@ -179,9 +177,9 @@ public final class InstanceGenerator {
 		String equalsMethodBody = 
 		  "public boolean equals(Object theObj) {\n" +
 		  "  if (theObj == this) return true;\n" +
-		  "  if (!(theObj instanceof com.clarkparsia.empire.SupportsRdfId)) return false;\n" +		  		  
+		  "  if (!(theObj instanceof org.streampipes.empire.core.empire.SupportsRdfId)) return false;\n" +
 		  "  if (!(mInterfaceClass.isAssignableFrom(theObj.getClass()))) return false;\n" +
-		  "  return getRdfId().equals( ((com.clarkparsia.empire.SupportsRdfId) theObj).getRdfId()) && super.equals(theObj);\n" +
+		  "  return getRdfId().equals( ((org.streampipes.empire.core.empire.SupportsRdfId) theObj).getRdfId()) && super.equals(theObj);\n" +
 		  "}\n";
 		
 		aClass.addMethod(CtNewMethod.make(equalsMethodBody, aClass));

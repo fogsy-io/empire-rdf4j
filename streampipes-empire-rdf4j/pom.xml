@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.streampipes.empire</groupId>
         <artifactId>streampipes-empire-parent</artifactId>
-        <version>1.8-SNAPSHOT</version>
+        <version>1.9.1-SNAPSHOT</version>
     </parent>
     <artifactId>streampipes-empire-rdf4j</artifactId>
 
@@ -22,12 +22,12 @@
         <dependency>
             <groupId>org.streampipes.empire</groupId>
             <artifactId>streampipes-empire-core</artifactId>
-            <version>1.8-SNAPSHOT</version>
+            <version>1.9.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.streampipes.empire</groupId>
             <artifactId>streampipes-empire-pinto</artifactId>
-            <version>1.8-SNAPSHOT</version>
+            <version>1.9.1-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
         <dependency>
