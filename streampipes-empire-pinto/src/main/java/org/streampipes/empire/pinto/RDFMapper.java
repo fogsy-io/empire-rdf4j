@@ -158,7 +158,16 @@ public final class RDFMapper {
     mIdFunctions = ImmutableMap.copyOf(theIdFunctions);
 
     mDefaultNamespace = mNamespaces.get(DEFAULT_PREFIX);
+
+    registerNamespaces();
   }
+
+  private void registerNamespaces() {
+    List<Namespace> additionalNamespaces = mMappingOptions.get(MappingOptions.REGISTER_ADDITIONAL_NAMESPACES);
+
+    additionalNamespaces.forEach(ns -> mNamespaces.put(ns.getPrefix(), ns.getName()));
+  }
+
 
   private <T> T newInstance(final Class<T> theClass) {
     try {

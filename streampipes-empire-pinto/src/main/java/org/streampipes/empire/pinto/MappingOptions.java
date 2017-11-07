@@ -15,9 +15,13 @@
 package org.streampipes.empire.pinto;
 
 
+import org.eclipse.rdf4j.model.Namespace;
 import org.streampipes.empire.core.empire.util.EmpireAnnotationProvider;
 import org.streampipes.empire.cp.common.utils.base.Option;
 import org.streampipes.empire.cp.common.utils.base.Options;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>Set of options for controlling some aspects of mapping beans to RDF.</p>
@@ -81,4 +85,7 @@ public final class MappingOptions {
 
 	public static final Option<UriSerializationStrategy> URI_SERIALIZATION_STRATEGY = Option.create("uri.serialization" +
 					".strategy", UriSerializationStrategy.INSTANCE);
+
+	public static final Option<List<Namespace>> REGISTER_ADDITIONAL_NAMESPACES = Option.create("register.namespaces",
+					new ArrayList<>());
 }
