@@ -30,5 +30,17 @@
             <version>1.9.1-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.streampipes</groupId>-->
+            <!--<artifactId>streampipes-model</artifactId>-->
+            <!--<version>0.41.2-SNAPSHOT</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.streampipes</groupId>-->
+            <!--<artifactId>streampipes-vocabulary</artifactId>-->
+            <!--<version>0.41.2-SNAPSHOT</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
     </dependencies>
 </project>

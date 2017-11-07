@@ -16,6 +16,7 @@
 package org.streampipes.empire.pinto.common.beans;
 
 import com.google.common.collect.AbstractIterator;
+import org.streampipes.empire.cp.common.utils.base.Options;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -41,11 +42,11 @@ public final class Beans {
 	 *
 	 * @return true if its a primitive, false otherwise.
 	 */
-	public static boolean isPrimitive(Object theObj) {
+	public static boolean isPrimitive(Object theObj, Options mp) {
 		return (Boolean.class.isInstance(theObj) || Integer.class.isInstance(theObj) || Long.class.isInstance(theObj)
 		        || Short.class.isInstance(theObj) || Double.class.isInstance(theObj) || Float.class.isInstance(theObj)
 		        || Date.class.isInstance(theObj) || String.class.isInstance(theObj) || Character.class.isInstance(theObj)
-		        || java.net.URI.class.isInstance(theObj));
+		        || (java.net.URI.class.isInstance(theObj)));
 	}
 
 	/**

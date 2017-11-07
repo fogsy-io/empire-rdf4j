@@ -461,7 +461,7 @@ public final class RDFMapper {
                         final PropertyDescriptor thePropertyDescriptor,
                         final IRI theProperty, final Object theObj) {
 
-    if (Beans.isPrimitive(theObj)) {
+    if (Beans.isPrimitive(theObj, mMappingOptions)) {
       theBuilder.addProperty(theProperty, toLiteral(theObj, getPropertyAnnotation(thePropertyDescriptor, theObj)));
     } else if (Enum.class.isAssignableFrom(theObj.getClass())) {
       theBuilder.addProperty(theProperty, enumToURI((Enum) theObj));
@@ -472,7 +472,7 @@ public final class RDFMapper {
         List<Value> aList = Lists.newArrayListWithExpectedSize(aCollection.size());
 
         for (Object aVal : aCollection) {
-          if (Beans.isPrimitive(aVal)) {
+          if (Beans.isPrimitive(aVal, mMappingOptions)) {
             aList.add(toLiteral(aVal, getPropertyAnnotation(thePropertyDescriptor, theObj)));
           } else {
             ResourceBuilder aIndividual = write(aVal);
@@ -487,7 +487,7 @@ public final class RDFMapper {
       } else {
         for (Object aVal : aCollection) {
           // this would not handle collections of collections, does that matter?
-          if (Beans.isPrimitive(aVal)) {
+          if (Beans.isPrimitive(aVal, mMappingOptions)) {
             theBuilder.addProperty(theProperty, toLiteral(aVal, getPropertyAnnotation(thePropertyDescriptor, theObj)));
           } else {
             theBuilder.addProperty(theProperty, write(aVal));
@@ -756,14 +756,17 @@ public final class RDFMapper {
     Model model = theGraph.filter(theResource, RDF.TYPE, null);
 
     for (Statement statement : model) {
+      Optional<Class<?>> stringValue =  annotationProvider.getClassesWithAnnotation(RdfsClass.class).stream().filter
+              (c ->
+              expand(c
+              .getAnnotation
+              (RdfsClass.class).value()).equals(statement.getObject().stringValue())).findFirst();
 
-      for (Class clazz : annotationProvider.getClassesWithAnnotation(RdfsClass.class)) {
-        RdfsClass rdfsAnnotation = (RdfsClass) clazz.getAnnotation(RdfsClass.class);
-        //System.out.println(rdfsAnnotation.value());
-        //System.out.println(statement.getObject().stringValue());
+      if (stringValue.isPresent()) {
+        return stringValue.get();
+      } else {
+        System.out.println("ERROR: " +statement.getObject().stringValue());
       }
-      return annotationProvider.getClassesWithAnnotation(RdfsClass.class).stream().filter(c -> expand(c.getAnnotation
-              (RdfsClass.class).value()).equals(statement.getObject().stringValue())).findFirst().get();
     }
     return null;
   }
@@ -800,7 +803,11 @@ public final class RDFMapper {
     } else if (Character.class.isInstance(theObj)) {
       return mValueFactory.createLiteral(String.valueOf(Character.class.cast(theObj)), XMLSchema.STRING);
     } else if (java.net.URI.class.isInstance(theObj)) {
-      return mValueFactory.createLiteral(theObj.toString(), XMLSchema.ANYURI);
+      if (mMappingOptions.get(MappingOptions.URI_SERIALIZATION_STRATEGY) == UriSerializationStrategy.XSD_ANYURI) {
+        return mValueFactory.createLiteral(theObj.toString(), XMLSchema.ANYURI);
+      } else {
+       return mValueFactory.createIRI(theObj.toString());
+      }
     }
 
     throw new RDFMappingException("Unknown or unsupported primitive type: " + theObj);

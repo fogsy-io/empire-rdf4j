@@ -78,4 +78,7 @@ public final class MappingOptions {
 
 	public static final Option<EmpireAnnotationProvider> USE_PROVIDED_CLASSES = Option.create("use.provided.classes",
 					null);
+
+	public static final Option<UriSerializationStrategy> URI_SERIALIZATION_STRATEGY = Option.create("uri.serialization" +
+					".strategy", UriSerializationStrategy.INSTANCE);
 }
