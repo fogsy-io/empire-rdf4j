@@ -737,19 +737,23 @@ public final class RDFMapper {
         LOGGER.info("Could not find type for collection %s", aClass);
       }
     } else if (!Classes.isInstantiable(aClass) || !Classes.hasDefaultConstructor(aClass)) {
-
       Class<?> aCurr = null;
-      final Iterable<Resource> aRdfTypes = Models2.getTypes(theGraph, theResource);
-      for (Resource aType : aRdfTypes) {
-        Class<?> aMappedClass = mMappings.get(aType);
-        if (aMappedClass != null) {
-          if (aCurr == null) {
-            aCurr = aMappedClass;
-          } else if (aCurr.isAssignableFrom(aMappedClass)) {
-            // we want the most specific class, that's likely to be what's instantiable
-            aCurr = aMappedClass;
+      if (mMappingOptions.get(MappingOptions.USE_PROVIDED_CLASSES) == null) {
+        final Iterable<Resource> aRdfTypes = Models2.getTypes(theGraph, theResource);
+        for (Resource aType : aRdfTypes) {
+          Class<?> aMappedClass = mMappings.get(aType);
+          if (aMappedClass != null) {
+            if (aCurr == null) {
+              aCurr = aMappedClass;
+            } else if (aCurr.isAssignableFrom(aMappedClass)) {
+              // we want the most specific class, that's likely to be what's instantiable
+              aCurr = aMappedClass;
+            }
           }
         }
+      } else {
+        EmpireAnnotationProvider annotationProvider = mMappingOptions.get(MappingOptions.USE_PROVIDED_CLASSES);
+        aCurr = getClassByAnnotation(theGraph, theResource, annotationProvider);
       }
 
       if (aCurr != null) {
