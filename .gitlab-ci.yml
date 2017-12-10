@@ -60,7 +60,6 @@ finish release:
     - mvn -B jgitflow:release-finish $MAVEN_CLI_OPTS
     - git push origin --all
     - git push origin --tags
-    - git push origin --delete $CI_BUILD_REF_NAME
   when: manual
 
 
