@@ -142,7 +142,7 @@
                 <configuration>
                     <flowInitContext>
                         <masterBranchName>master</masterBranchName>
-                        <developBranchName>dev</developBranchName>
+                        <developBranchName>develop</developBranchName>
                         <featureBranchPrefix>feature-</featureBranchPrefix>
                         <releaseBranchPrefix>release-</releaseBranchPrefix>
                         <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
