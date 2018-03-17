@@ -20,6 +20,7 @@ build:
   stage: build
   script:
     - echo "$MAVEN_CREDENTIALS" > /root/.m2/settings.xml
+    - echo "$GPG_PASSPHRASE"
     - mvn clean package gpg:sign -Dgpg.passphrase=$GPG_PASSPHRASE
 #    - mvn deploy $MAVEN_CLI_OPTS
   except:
