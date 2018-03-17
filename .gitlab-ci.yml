@@ -17,7 +17,7 @@ build:
   script:
     - echo "$MAVEN_CREDENTIALS" > /root/.m2/settings.xml
     - mvn clean package -DskipTests
-    - mvn deploy
+#    - mvn deploy
 
 start release:
   image: maven:3-jdk-8
