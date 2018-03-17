@@ -16,13 +16,13 @@ before_script:
   - export GPG_TTY=$(tty)
   - echo "$GPG_KEY" > /signingkey.asc
   - gpg --batch --import /signingkey.asc
-  - gpg2 --list-secret
   - gpg --list-secret
 
 build:
   image: maven:3-jdk-8
   stage: build
   script:
+    - gpg --list-secret
     - echo "$MAVEN_CREDENTIALS" > /root/.m2/settings.xml
     - echo "$GPG_PASSPHRASE"
     - mvn clean package gpg:sign -Dgpg.passphrase="$GPG_PASSPHRASE"
