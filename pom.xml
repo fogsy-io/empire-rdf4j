@@ -240,6 +240,7 @@
 
     <!-- Environment Settings -->
     <scm>
+        <connection>scm:git:ssh://git@ipe-wim-gitlab.fzi.de:2222/streampipes/empire.git</connection>
         <developerConnection>scm:git:ssh://git@ipe-wim-gitlab.fzi.de:2222/streampipes/empire.git
         </developerConnection>
         <url>https://ipe-wim-gitlab.fzi.de/streampipes/empire</url>
