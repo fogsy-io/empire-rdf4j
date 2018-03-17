@@ -20,7 +20,7 @@ build:
   image: maven:3-jdk-8
   stage: build
   script:
-    - gpg --list-secret
+    - gpg --list-key
     - echo "$MAVEN_CREDENTIALS" > /root/.m2/settings.xml
     - echo "$GPG_PASSPHRASE"
     - mvn clean package gpg:sign
