@@ -14,11 +14,6 @@
             <version>0.9.10</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.rdf4j</groupId>
-            <artifactId>rdf4j-rio-binary</artifactId>
-            <version>2.2.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.streampipes.empire</groupId>
             <artifactId>streampipes-empire-core</artifactId>
         </dependency>
@@ -27,17 +22,5 @@
             <artifactId>streampipes-empire-pinto</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.streampipes</groupId>-->
-            <!--<artifactId>streampipes-model</artifactId>-->
-            <!--<version>0.41.2-SNAPSHOT</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.streampipes</groupId>-->
-            <!--<artifactId>streampipes-vocabulary</artifactId>-->
-            <!--<version>0.41.2-SNAPSHOT</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
     </dependencies>
 </project>
