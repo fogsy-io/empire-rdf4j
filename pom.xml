@@ -2,15 +2,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- The Basics -->
     <groupId>org.streampipes</groupId>
     <artifactId>streampipes-empire-parent</artifactId>
     <version>1.9.5-SNAPSHOT</version>
     <packaging>pom</packaging>
+
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <rdf4j.version>2.2.4</rdf4j.version>
         <guava.version>22.0</guava.version>
     </properties>
+
+    <name>streampipes-empire</name>
+    <description>A fork of Empire adapted to the needs of StreamPipes RDF handling</description>
+    <url>http://github.com/streampipes</url>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -141,7 +147,6 @@
         <module>streampipes-empire-pinto</module>
     </modules>
 
-    <!-- Build Settings -->
     <build>
         <pluginManagement>
             <plugins>
@@ -209,6 +214,20 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -217,6 +236,25 @@
         <developerConnection>scm:git:ssh://git@ipe-wim-gitlab.fzi.de:2222/streampipes/empire.git
         </developerConnection>
     </scm>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Dominik Riemer</name>
+            <email>riemer@fzi.de</email>
+        </developer>
+        <developer>
+            <name>Philipp Zehnder</name>
+            <email>zehnder@fzi.de</email>
+        </developer>
+    </developers>
 
     <distributionManagement>
         <repository>
