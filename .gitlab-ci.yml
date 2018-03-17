@@ -22,7 +22,7 @@ build:
     - gpg --list-key
     - echo "$MAVEN_CREDENTIALS" > /root/.m2/settings.xml
     - mvn clean package gpg:sign
-#    - mvn deploy $MAVEN_CLI_OPTS
+    - mvn deploy 
   except:
     - /release-.*$/
 
