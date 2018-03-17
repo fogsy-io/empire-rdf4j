@@ -11,19 +11,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.streampipes.empire</groupId>
+            <groupId>org.streampipes</groupId>
             <artifactId>streampipes-empire-annotations</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.streampipes.empire</groupId>
+            <groupId>org.streampipes</groupId>
             <artifactId>streampipes-empire-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.streampipes.empire</groupId>
+            <groupId>org.streampipes</groupId>
             <artifactId>streampipes-empire-cp-common-utils</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.streampipes.empire</groupId>
+            <groupId>org.streampipes</groupId>
             <artifactId>streampipes-empire-cp-openrdf-utils</artifactId>
         </dependency>
         <dependency>

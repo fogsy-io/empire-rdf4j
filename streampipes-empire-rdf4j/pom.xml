@@ -14,11 +14,11 @@
             <version>0.9.10</version>
         </dependency>
         <dependency>
-            <groupId>org.streampipes.empire</groupId>
+            <groupId>org.streampipes</groupId>
             <artifactId>streampipes-empire-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.streampipes.empire</groupId>
+            <groupId>org.streampipes</groupId>
             <artifactId>streampipes-empire-pinto</artifactId>
             <scope>test</scope>
         </dependency>

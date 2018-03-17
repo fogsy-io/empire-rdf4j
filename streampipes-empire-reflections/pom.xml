@@ -14,7 +14,7 @@
             <version>0.9.8</version>
         </dependency>
         <dependency>
-            <groupId>org.streampipes.empire</groupId>
+            <groupId>org.streampipes</groupId>
             <artifactId>streampipes-empire-core</artifactId>
         </dependency>
     </dependencies>
