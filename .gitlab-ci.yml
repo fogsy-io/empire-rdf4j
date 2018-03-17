@@ -15,7 +15,7 @@ before_script:
   - gpg --version
   - export GPG_TTY=$(tty)
   - echo "$GPG_KEY" > /signingkey.asc
-  - gpg --batch --fast-import /signingkey.asc
+  - gpg --batch --import /signingkey.asc
 
 build:
   image: maven:3-jdk-8
