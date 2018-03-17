@@ -22,6 +22,8 @@ build:
     - echo "$MAVEN_CREDENTIALS" > /root/.m2/settings.xml
     - mvn clean package -DskipTests -Dgpg.passphrase=$GPG_PASSPHRASE
     - mvn deploy
+  except:
+    - /release-.*$/
 
 start release:
   image: maven:3-jdk-8
