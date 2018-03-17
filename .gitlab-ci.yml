@@ -13,8 +13,7 @@ stages:
   
 before_script: 
   - export GPG_TTY=$(tty)
-  - echo "$GPG_KEY" > /signingkey.asc
-  - gpg --batch --import /signingkey.asc --passphrase "$GPG_PASSPHRASE"
+  - echo "$GPG_PRIVATE_KEY" | gpg --batch --import --passphrase "$GPG_PASSPHRASE"
 
 build:
   image: maven:3-jdk-8
