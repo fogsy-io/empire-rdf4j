@@ -10,14 +10,19 @@ variables:
 stages:
   - build
   - release
+  
+before_script: 
+  - echo "$GPG_PRIVATE_KEY" | gpg --batch --import --passphrase "$GPG_PASSPHRASE"
 
 build:
   image: maven:3-jdk-8
   stage: build
   script:
     - echo "$MAVEN_CREDENTIALS" > /root/.m2/settings.xml
-    - mvn clean package -DskipTests
-    - mvn deploy
+    - mvn clean package gpg:sign
+    - mvn deploy 
+  except:
+    - /release-.*$/
 
 start release:
   image: maven:3-jdk-8
