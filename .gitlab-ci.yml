@@ -12,7 +12,7 @@ stages:
   - release
   
 before_script: 
-  - echo "$GPG_KEY" > /sgningkey.asc
+  - echo "$GPG_KEY" > /signingkey.asc
   - gpg --fast-import /signingkey.asc
 
 build:
