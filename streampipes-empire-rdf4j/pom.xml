@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.streampipes</groupId>
         <artifactId>streampipes-empire-parent</artifactId>
-        <version>1.9.5-SNAPSHOT</version>
+        <version>1.9.5</version>
     </parent>
     <artifactId>streampipes-empire-rdf4j</artifactId>
 
