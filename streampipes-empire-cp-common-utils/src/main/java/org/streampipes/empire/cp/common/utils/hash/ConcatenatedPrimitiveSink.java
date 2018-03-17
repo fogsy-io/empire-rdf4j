@@ -15,13 +15,13 @@
 
 package org.streampipes.empire.cp.common.utils.hash;
 
-import java.nio.charset.Charset;
-import java.util.Iterator;
-import java.util.List;
-
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.hash.PrimitiveSink;
+
+import java.nio.charset.Charset;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * <p>An implementation of {@link PrimitiveSink} which has a number of 'child' sinks to which each call to this Sink is

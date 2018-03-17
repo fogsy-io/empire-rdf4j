@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.streampipes.empire</groupId>
+        <groupId>org.streampipes</groupId>
         <artifactId>streampipes-empire-parent</artifactId>
-        <version>1.9.4</version>
+        <version>1.9.5</version>
     </parent>
     <artifactId>streampipes-empire-reflections</artifactId>
 
@@ -14,9 +14,8 @@
             <version>0.9.8</version>
         </dependency>
         <dependency>
-            <groupId>org.streampipes.empire</groupId>
+            <groupId>org.streampipes</groupId>
             <artifactId>streampipes-empire-core</artifactId>
-            <version>1.9.4</version>
         </dependency>
     </dependencies>
 </project>

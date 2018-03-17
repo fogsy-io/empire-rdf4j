@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.streampipes.empire</groupId>
+        <groupId>org.streampipes</groupId>
         <artifactId>streampipes-empire-parent</artifactId>
-        <version>1.9.4</version>
+        <version>1.9.5</version>
     </parent>
     <artifactId>streampipes-empire-core</artifactId>
 
@@ -27,22 +27,18 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
-            <artifactId>rdf4j-runtime</artifactId>
-            <version>2.2.2</version>
+            <artifactId>rdf4j-repository-http</artifactId>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-queryrender</artifactId>
-            <version>2.2.2</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.rdf4j</groupId>
             <artifactId>rdf4j-queryparser-serql</artifactId>
-            <version>2.2.2</version>
         </dependency>
         <dependency>
             <groupId>com.google.inject</groupId>
@@ -70,15 +66,15 @@
             <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>org.streampipes.empire</groupId>
+            <groupId>org.streampipes</groupId>
             <artifactId>streampipes-empire-cp-common-utils</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.streampipes.empire</groupId>
+            <groupId>org.streampipes</groupId>
             <artifactId>streampipes-empire-cp-openrdf-utils</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.streampipes.empire</groupId>
+            <groupId>org.streampipes</groupId>
             <artifactId>streampipes-empire-annotations</artifactId>
         </dependency>
     </dependencies>
