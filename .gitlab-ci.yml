@@ -12,7 +12,6 @@ stages:
   - release
   
 before_script: 
-  - export GPG_TTY=$(tty)
   - echo "$GPG_PRIVATE_KEY" | gpg --batch --import --passphrase "$GPG_PASSPHRASE"
 
 build:
