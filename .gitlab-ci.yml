@@ -12,11 +12,9 @@ stages:
   - release
   
 before_script: 
-  - gpg --version
   - export GPG_TTY=$(tty)
   - echo "$GPG_KEY" > /signingkey.asc
   - gpg --batch --import /signingkey.asc
-  - gpg --list-secret
 
 build:
   image: maven:3-jdk-8
@@ -25,7 +23,7 @@ build:
     - gpg --list-secret
     - echo "$MAVEN_CREDENTIALS" > /root/.m2/settings.xml
     - echo "$GPG_PASSPHRASE"
-    - mvn clean package gpg:sign -Dgpg.passphrase="$GPG_PASSPHRASE"
+    - mvn clean package gpg:sign
 #    - mvn deploy $MAVEN_CLI_OPTS
   except:
     - /release-.*$/
