@@ -4,12 +4,12 @@
 
     <groupId>org.streampipes</groupId>
     <artifactId>streampipes-empire-parent</artifactId>
-    <version>1.9.8</version>
+    <version>1.9.9</version>
     <packaging>pom</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <rdf4j.version>2.2.4</rdf4j.version>
+        <rdf4j.version>2.4.5</rdf4j.version>
         <guava.version>22.0</guava.version>
     </properties>
 
@@ -272,9 +272,9 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
         <snapshotRepository>
-            <id>sonatype</id>
-            <name>Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <id>deployment</id>
+            <name>Internal Releases</name>
+            <url>https://laus.fzi.de/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
