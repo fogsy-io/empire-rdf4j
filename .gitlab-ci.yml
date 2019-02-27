@@ -21,7 +21,6 @@ build:
   script:
     - echo "$MAVEN_CREDENTIALS" > /root/.m2/settings.xml
     - mvn clean package gpg:sign -DskipTests
-    - mvn deploy 
   except:
     - /release-.*$/
 
