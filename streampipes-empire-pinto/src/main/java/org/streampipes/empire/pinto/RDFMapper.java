@@ -575,13 +575,13 @@ public final class RDFMapper {
       final Literal aLit = (Literal) theValue;
       final IRI aDatatype = aLit.getDatatype() != null ? aLit.getDatatype() : null;
 
-      // This is required to properly deserialize URI's encoded as strings
+      // This is required to properly deserialize Lists containing strings encoded as URI's encoded as strings
       if (theDescriptor != null && theDescriptor.getPropertyType().isAssignableFrom(List.class)) {
         Type type = theDescriptor.getReadMethod().getGenericReturnType();
         if (type instanceof ParameterizedType) {
           Type[] types = ((ParameterizedType) type).getActualTypeArguments();
 
-          if (Arrays.stream(types).anyMatch(t -> t.getClass().getCanonicalName().equals(URI.class.getCanonicalName()))) {
+          if (Arrays.stream(types).anyMatch(t -> t.getTypeName().equals("java.net.URI"))) {
             try {
               return new java.net.URI(aLit.getLabel());
             } catch (URISyntaxException e) {
@@ -591,6 +591,7 @@ public final class RDFMapper {
         }
       }
 
+      // This is required to properly deserialize URI's encoded as strings
       if (theDescriptor != null && theDescriptor.getPropertyType().isAssignableFrom(URI.class)) {
         try {
           return new java.net.URI(aLit.getLabel());
