@@ -43,6 +43,7 @@ import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.RDFS;
 import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import io.fogsy.empire.annotations.RdfId;
@@ -74,17 +75,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -584,7 +575,31 @@ public final class RDFMapper {
       final Literal aLit = (Literal) theValue;
       final IRI aDatatype = aLit.getDatatype() != null ? aLit.getDatatype() : null;
 
-      if (aDatatype == null || XMLSchema.STRING.equals(aDatatype) || RDFS.LITERAL.equals(aDatatype)) {
+      // This is required to properly deserialize Lists containing strings encoded as URI's encoded as strings
+      if (theDescriptor != null && theDescriptor.getPropertyType().isAssignableFrom(List.class)) {
+        Type type = theDescriptor.getReadMethod().getGenericReturnType();
+        if (type instanceof ParameterizedType) {
+          Type[] types = ((ParameterizedType) type).getActualTypeArguments();
+
+          if (Arrays.stream(types).anyMatch(t -> t.getTypeName().equals("java.net.URI"))) {
+            try {
+              return new java.net.URI(aLit.getLabel());
+            } catch (URISyntaxException e) {
+              LOGGER.warn("URI syntax exception converting literal value which is not a valid URI {} ", aLit.getLabel());
+            }
+          }
+        }
+      }
+
+      // This is required to properly deserialize URI's encoded as strings
+      if (theDescriptor != null && theDescriptor.getPropertyType().isAssignableFrom(URI.class)) {
+        try {
+          return new java.net.URI(aLit.getLabel());
+        } catch (URISyntaxException e) {
+          LOGGER.warn("URI syntax exception converting literal value which is not a valid URI {} ", aLit.getLabel());
+          return null;
+        }
+      } else if (aDatatype == null || XMLSchema.STRING.equals(aDatatype) || RDFS.LITERAL.equals(aDatatype)) {
         String aStr = aLit.getLabel();
 
         if (theDescriptor != null && Character.TYPE.isAssignableFrom(theDescriptor.getPropertyType())) {
@@ -771,9 +786,9 @@ public final class RDFMapper {
     for (Statement statement : model) {
       Optional<Class<?>> stringValue =  annotationProvider.getClassesWithAnnotation(RdfsClass.class).stream().filter
               (c ->
-              expand(c
-              .getAnnotation
-              (RdfsClass.class).value()).equals(statement.getObject().stringValue())).findFirst();
+                      expand(c
+                              .getAnnotation
+                                      (RdfsClass.class).value()).equals(statement.getObject().stringValue())).findFirst();
 
       if (stringValue.isPresent()) {
         return stringValue.get();
@@ -819,7 +834,7 @@ public final class RDFMapper {
       if (mMappingOptions.get(MappingOptions.URI_SERIALIZATION_STRATEGY) == UriSerializationStrategy.XSD_ANYURI) {
         return mValueFactory.createLiteral(theObj.toString(), XMLSchema.ANYURI);
       } else {
-       return mValueFactory.createIRI(theObj.toString());
+        return mValueFactory.createIRI(theObj.toString());
       }
     }
 
