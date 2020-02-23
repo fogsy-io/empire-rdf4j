@@ -15,15 +15,15 @@
 
 package io.fogsy.empire.cp.openrdf.utils.model;
 
-import java.util.Collection;
-
-import java.util.function.Predicate;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.model.Value;
+
+import java.util.Collection;
+import java.util.function.Predicate;
 
 /**
  * <p>A {@link Model} which has a {@link Predicate constraint} placed upon which statements can be added to the Model.</p>
@@ -95,12 +95,12 @@ public final class ConstrainedModel extends DelegatingModel {
 	public boolean add(final Resource theResource, final IRI theURI, final Value theValue, final Resource... theContexts) {
 
 		if (theContexts == null || theContexts.length == 0) {
-			return add(getValueFactory().createStatement(theResource, theURI, theValue));
+			return super.add(theResource, theURI, theValue);
 		}
 		else {
 			boolean aAdded = true;
 			for (Resource aCxt : theContexts) {
-				aAdded |= add(getValueFactory().createStatement(theResource, theURI, theValue, aCxt));
+				aAdded |= super.add(theResource, theURI, theValue, aCxt);
 			}
 
 			return aAdded;

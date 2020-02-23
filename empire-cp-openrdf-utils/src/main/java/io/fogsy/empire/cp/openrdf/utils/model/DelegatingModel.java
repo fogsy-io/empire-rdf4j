@@ -15,17 +15,13 @@
 
 package io.fogsy.empire.cp.openrdf.utils.model;
 
-import org.eclipse.rdf4j.model.BNode;
 import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Namespace;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.model.URI;
 import org.eclipse.rdf4j.model.Value;
-import org.eclipse.rdf4j.model.ValueFactory;
-import org.eclipse.rdf4j.model.util.ModelException;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -105,44 +101,8 @@ public abstract class DelegatingModel implements Model {
 	}
 
 	@Override
-	@Deprecated
-	public Optional<IRI> objectIRI() throws ModelException {
-		return mModel.objectIRI();
-	}
-
-	@Override
-	@Deprecated
-	public Optional<Literal> objectLiteral() throws ModelException {
-		return mModel.objectLiteral();
-	}
-
-	@Override
-	@Deprecated
-	public Optional<Resource> objectResource() throws ModelException {
-		return mModel.objectResource();
-	}
-
-	@Override
 	public Set<Value> objects() {
 		return mModel.objects();
-	}
-
-	@Override
-	@Deprecated
-	public Optional<String> objectString() throws ModelException {
-		return mModel.objectString();
-	}
-
-	@Override
-	@Deprecated
-	public Optional<IRI> objectURI() throws ModelException {
-		return mModel.objectURI();
-	}
-
-	@Override
-	@Deprecated
-	public Optional<Value> objectValue() throws ModelException {
-		return mModel.objectValue();
 	}
 
 	@Override
@@ -177,49 +137,13 @@ public abstract class DelegatingModel implements Model {
 	}
 
 	@Override
-	@Deprecated
-	public Optional<BNode> subjectBNode() throws ModelException {
-		return mModel.subjectBNode();
-	}
-
-	@Override
-	@Deprecated
-	public Optional<IRI> subjectIRI() throws ModelException {
-		return mModel.subjectIRI();
-	}
-
-	@Override
-	@Deprecated
-	public Optional<Resource> subjectResource() throws ModelException {
-		return mModel.subjectResource();
-	}
-
-	@Override
 	public Set<Resource> subjects() {
 		return mModel.subjects();
 	}
 
 	@Override
-	@Deprecated
-	public Optional<IRI> subjectURI() throws ModelException {
-		return mModel.subjectURI();
-	}
-
-	@Override
 	public Model unmodifiable() {
 		return mModel.unmodifiable();
-	}
-
-	@Override
-	@Deprecated
-	public ValueFactory getValueFactory() {
-		return mModel.getValueFactory();
-	}
-
-	@Override
-	@Deprecated
-	public Iterator<Statement> match(final Resource subj, final IRI pred, final Value obj, final Resource... contexts) {
-		return mModel.match(subj, pred, obj, contexts);
 	}
 
 	@Override

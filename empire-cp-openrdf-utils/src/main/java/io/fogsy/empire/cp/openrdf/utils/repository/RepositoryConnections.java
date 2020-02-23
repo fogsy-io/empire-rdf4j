@@ -17,7 +17,7 @@ package io.fogsy.empire.cp.openrdf.utils.repository;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Closeables;
-import org.eclipse.rdf4j.model.Graph;
+import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
@@ -67,10 +67,10 @@ public final class RepositoryConnections {
 		}
 	}
 
-	public static void add(final RepositoryConnection theConnection, final Graph theGraph) throws RepositoryException {
+	public static void add(final RepositoryConnection theConnection, final Model theModel) throws RepositoryException {
 		try {
 			theConnection.begin();
-			theConnection.add(theGraph);
+			theConnection.add(theModel);
 			theConnection.commit();
 		}
 		catch (RepositoryException e) {
@@ -79,10 +79,10 @@ public final class RepositoryConnections {
 		}
 	}
 
-	public static void remove(final RepositoryConnection theConnection, final Graph theGraph) throws RepositoryException {
+	public static void remove(final RepositoryConnection theConnection, final Model theModel) throws RepositoryException {
 		try {
 			theConnection.begin();
-			theConnection.remove(theGraph);
+			theConnection.remove(theModel);
 			theConnection.commit();
 		}
 		catch (RepositoryException e) {

@@ -17,7 +17,7 @@ package io.fogsy.empire.cp.openrdf.utils.sail;
 
 import io.fogsy.empire.cp.openrdf.utils.util.AdunaIterations;
 import org.eclipse.rdf4j.common.iteration.CloseableIteration;
-import org.eclipse.rdf4j.model.Graph;
+import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.sail.SailConnection;
@@ -54,10 +54,10 @@ public final class SailConnections {
 		}
 	}
 
-	public static void add(final SailConnection theConnection, final Graph theGraph) throws SailException {
+	public static void add(final SailConnection theConnection, final Model theModel) throws SailException {
 		try {
 			theConnection.begin();
-			for (Statement aStmt : theGraph) {
+			for (Statement aStmt : theModel) {
 				if (aStmt.getContext() != null) {
 					theConnection.addStatement(aStmt.getSubject(), aStmt.getPredicate(), aStmt.getObject(), aStmt.getContext());
 				}
@@ -73,10 +73,10 @@ public final class SailConnections {
 		}
 	}
 
-	public static void remove(final SailConnection theConnection, final Graph theGraph) throws SailException {
+	public static void remove(final SailConnection theConnection, final Model theModel) throws SailException {
 		try {
 			theConnection.begin();
-			for (Statement aStmt : theGraph) {
+			for (Statement aStmt : theModel) {
 				if (aStmt.getContext() != null) {
 					theConnection.removeStatements(aStmt.getSubject(), aStmt.getPredicate(), aStmt.getObject(), aStmt.getContext());
 				}

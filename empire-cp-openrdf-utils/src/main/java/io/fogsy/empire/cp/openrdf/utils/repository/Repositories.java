@@ -19,8 +19,8 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Closeables;
 import org.eclipse.rdf4j.common.iteration.CloseableIteration;
 import org.eclipse.rdf4j.common.iteration.EmptyIteration;
-import org.eclipse.rdf4j.model.Graph;
 import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.model.Value;
@@ -95,15 +95,15 @@ public final class Repositories {
 		}
 	}
 
-	public static void add(final Repository theRepository, final Graph theGraph) throws RepositoryException {
+	public static void add(final Repository theRepository, final Model theModel) throws RepositoryException {
 		try (RepositoryConnection aConn = theRepository.getConnection()) {
-			RepositoryConnections.add(aConn, theGraph);
+			RepositoryConnections.add(aConn, theModel);
 		}
 	}
 
-	public static void remove(final Repository theRepository, final Graph theGraph) throws RepositoryException {
+	public static void remove(final Repository theRepository, final Model theModel) throws RepositoryException {
 		try (RepositoryConnection aConn = theRepository.getConnection()) {
-			RepositoryConnections.remove(aConn, theGraph);
+			RepositoryConnections.remove(aConn, theModel);
 		}
 	}
 

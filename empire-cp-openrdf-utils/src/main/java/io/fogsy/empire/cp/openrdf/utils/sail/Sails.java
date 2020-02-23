@@ -17,7 +17,7 @@ package io.fogsy.empire.cp.openrdf.utils.sail;
 
 import io.fogsy.empire.cp.openrdf.utils.util.AdunaIterations;
 import org.eclipse.rdf4j.common.iteration.CloseableIteration;
-import org.eclipse.rdf4j.model.Graph;
+import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Statement;
 import org.eclipse.rdf4j.sail.Sail;
 import org.eclipse.rdf4j.sail.SailConnection;
@@ -46,20 +46,20 @@ public final class Sails {
 		}
 	}
 
-	public static void add(final Sail theSail, final Graph theGraph) throws SailException {
+	public static void add(final Sail theSail, final Model theModel) throws SailException {
 		SailConnection aConn = theSail.getConnection();
 		try {
-			SailConnections.add(aConn, theGraph);
+			SailConnections.add(aConn, theModel);
 		}
 		finally {
 			aConn.close();
 		}
 	}
 
-	public static void remove(final Sail theSail, final Graph theGraph) throws SailException {
+	public static void remove(final Sail theSail, final Model theModel) throws SailException {
 		SailConnection aConn = theSail.getConnection();
 		try {
-			SailConnections.remove(aConn, theGraph);
+			SailConnections.remove(aConn, theModel);
 		}
 		finally {
 			aConn.close();
