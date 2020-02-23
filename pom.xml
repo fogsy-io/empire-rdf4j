@@ -2,20 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.streampipes</groupId>
-    <artifactId>streampipes-empire-parent</artifactId>
-    <version>1.9.11</version>
+    <groupId>io.fogsy</groupId>
+    <artifactId>empire-parent</artifactId>
+    <version>1.9.13</version>
     <packaging>pom</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <rdf4j.version>2.4.5</rdf4j.version>
+        <rdf4j.version>3.1.0</rdf4j.version>
         <guava.version>22.0</guava.version>
     </properties>
 
-    <name>streampipes-empire</name>
-    <description>A fork of Empire adapted to the needs of StreamPipes RDF handling</description>
-    <url>http://github.com/streampipes</url>
+    <name>empire</name>
+    <description>A fork of Empire RDF</description>
+    <url>http://github.com/fogsy-io/empire-rdf4j</url>
 
     <dependencyManagement>
         <dependencies>
@@ -105,46 +105,46 @@
                 <version>${rdf4j.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.streampipes</groupId>
-                <artifactId>streampipes-empire-cp-common-utils</artifactId>
+                <groupId>io.fogsy</groupId>
+                <artifactId>empire-cp-common-utils</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.streampipes</groupId>
-                <artifactId>streampipes-empire-cp-openrdf-utils</artifactId>
+                <groupId>io.fogsy</groupId>
+                <artifactId>empire-cp-openrdf-utils</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.streampipes</groupId>
-                <artifactId>streampipes-empire-annotations</artifactId>
+                <groupId>io.fogsy</groupId>
+                <artifactId>empire-annotations</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.streampipes</groupId>
-                <artifactId>streampipes-empire-pinto</artifactId>
+                <groupId>io.fogsy</groupId>
+                <artifactId>empire-pinto</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.streampipes</groupId>
-                <artifactId>streampipes-empire-core</artifactId>
+                <groupId>io.fogsy</groupId>
+                <artifactId>empire-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.streampipes</groupId>
-                <artifactId>streampipes-empire-reflections</artifactId>
+                <groupId>io.fogsy</groupId>
+                <artifactId>empire-reflections</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <modules>
-        <module>streampipes-empire-core</module>
-        <module>streampipes-empire-reflections</module>
-        <module>streampipes-empire-rdf4j</module>
-        <module>streampipes-empire-cp-common-utils</module>
-        <module>streampipes-empire-cp-openrdf-utils</module>
-        <module>streampipes-empire-annotations</module>
-        <module>streampipes-empire-pinto</module>
+        <module>empire-core</module>
+        <module>empire-reflections</module>
+        <module>empire-rdf4j</module>
+        <module>empire-cp-common-utils</module>
+        <module>empire-cp-openrdf-utils</module>
+        <module>empire-annotations</module>
+        <module>empire-pinto</module>
     </modules>
 
     <build>
@@ -153,7 +153,11 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.10.4</version>
+                    <version>3.1.0</version>
+                    <configuration>
+                        <source>8</source>
+                        <doclint>none</doclint>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -228,22 +232,16 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <gpgArguments>
-                        <arg>--pinentry-mode</arg>
-                        <arg>loopback</arg>
-                    </gpgArguments>
-                </configuration>
             </plugin>
         </plugins>
     </build>
 
     <!-- Environment Settings -->
     <scm>
-        <connection>scm:git:ssh://git@ipe-wim-gitlab.fzi.de:2222/streampipes/empire.git</connection>
-        <developerConnection>scm:git:ssh://git@ipe-wim-gitlab.fzi.de:2222/streampipes/empire.git
+        <connection>scm:git:ssh://git@github.com:fogsy-io/empire-rdf4j.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:fogsy-io/empire-rdf4j.git
         </developerConnection>
-        <url>https://ipe-wim-gitlab.fzi.de/streampipes/empire</url>
+        <url>https://github.com/fogsy-io/empire-rdf4j</url>
     </scm>
 
     <licenses>
@@ -265,16 +263,24 @@
         </developer>
     </developers>
 
+    <repositories>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <name>Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
+
     <distributionManagement>
         <repository>
-            <id>sonatype</id>
+            <id>sonatype-releases</id>
             <name>Releases</name>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
         <snapshotRepository>
-            <id>deployment</id>
-            <name>Internal Releases</name>
-            <url>https://laus.fzi.de/nexus/content/repositories/snapshots/</url>
+            <id>sonatype-snapshots</id>
+            <name>Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 </project>

@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+Changes after Empire fork
+=======================
+    * Refactored the build system back to Maven
+    * Updated sesame libraries to use RDF4J
+    * Extended MappingOptions with additional options (e.g., to add namespaces)
+    * Integrated Pinto
+    * Several bug fixes
+
 Empire 1.0 (2015-11-18)
 =======================
     * MODIFIED: Java 8
