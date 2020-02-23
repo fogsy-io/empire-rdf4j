@@ -15,7 +15,7 @@
 
     <name>empire</name>
     <description>A fork of Empire RDF</description>
-    <url>http://github.com/fogsy-io/empire</url>
+    <url>http://github.com/fogsy-io/empire-rdf4j</url>
 
     <dependencyManagement>
         <dependencies>
@@ -264,6 +264,14 @@
             <email>zehnder@fzi.de</email>
         </developer>
     </developers>
+
+    <repositories>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <name>Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
 
     <distributionManagement>
         <repository>
