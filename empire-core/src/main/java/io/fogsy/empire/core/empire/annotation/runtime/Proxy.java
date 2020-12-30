@@ -16,7 +16,7 @@
 package io.fogsy.empire.core.empire.annotation.runtime;
 
 import io.fogsy.empire.core.empire.ds.DataSource;
-import io.fogsy.empire.core.empire.SupportsRdfId;
+import io.fogsy.empire.api.SupportsRdfId;
 
 import io.fogsy.empire.core.empire.annotation.RdfGenerator;
 

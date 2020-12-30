@@ -15,7 +15,7 @@
 
 package io.fogsy.empire.core.empire.annotation;
 
-import io.fogsy.empire.core.empire.SupportsRdfId;
+import io.fogsy.empire.api.SupportsRdfId;
 import io.fogsy.empire.core.empire.util.EmpireUtil;
 import com.google.common.base.Objects;
 

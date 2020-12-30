@@ -20,7 +20,7 @@ import io.fogsy.empire.annotations.NamedGraph;
 import io.fogsy.empire.core.empire.annotation.SupportsRdfIdImpl;
 import io.fogsy.empire.core.empire.annotation.RdfGenerator;
 import io.fogsy.empire.core.empire.annotation.AnnotationChecker;
-import io.fogsy.empire.core.empire.SupportsRdfId;
+import io.fogsy.empire.api.SupportsRdfId;
 import io.fogsy.empire.core.empire.ds.DataSource;
 import io.fogsy.empire.core.empire.Empire;
 

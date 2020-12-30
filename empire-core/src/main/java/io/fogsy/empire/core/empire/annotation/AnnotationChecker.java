@@ -17,7 +17,7 @@ package io.fogsy.empire.core.empire.annotation;
 
 import io.fogsy.empire.annotations.RdfsClass;
 import io.fogsy.empire.core.empire.util.BeanReflectUtil;
-import io.fogsy.empire.core.empire.SupportsRdfId;
+import io.fogsy.empire.api.SupportsRdfId;
 import io.fogsy.empire.core.empire.EmpireException;
 import io.fogsy.empire.core.empire.EmpireOptions;
 

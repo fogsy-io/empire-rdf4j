@@ -23,7 +23,7 @@ import io.fogsy.empire.core.empire.Dialect;
 import io.fogsy.empire.core.empire.Empire;
 import io.fogsy.empire.core.empire.EmpireGenerated;
 import io.fogsy.empire.core.empire.EmpireOptions;
-import io.fogsy.empire.core.empire.SupportsRdfId;
+import io.fogsy.empire.api.SupportsRdfId;
 import io.fogsy.empire.core.empire.annotation.runtime.Proxy;
 import io.fogsy.empire.core.empire.codegen.InstanceGenerator;
 import io.fogsy.empire.core.empire.ds.DataSource;

@@ -3,7 +3,7 @@
     <parent>
         <groupId>io.fogsy</groupId>
         <artifactId>empire-parent</artifactId>
-        <version>1.9.13</version>
+        <version>1.9.14</version>
     </parent>
     <artifactId>empire-core</artifactId>
 
@@ -63,6 +63,10 @@
             <groupId>aopalliance</groupId>
             <artifactId>aopalliance</artifactId>
             <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.fogsy</groupId>
+            <artifactId>empire-api</artifactId>
         </dependency>
         <dependency>
             <groupId>io.fogsy</groupId>

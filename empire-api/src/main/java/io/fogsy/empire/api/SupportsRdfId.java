@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package io.fogsy.empire.core.empire;
+package io.fogsy.empire.api;
 
 import java.net.URI;
 
