@@ -19,7 +19,7 @@ import io.fogsy.empire.core.empire.Empire;
 import io.fogsy.empire.core.empire.EmpireException;
 import io.fogsy.empire.core.empire.EmpireGenerated;
 import io.fogsy.empire.core.empire.EmpireOptions;
-import io.fogsy.empire.core.empire.SupportsRdfId;
+import io.fogsy.empire.api.SupportsRdfId;
 import io.fogsy.empire.core.empire.annotation.AnnotationChecker;
 import io.fogsy.empire.core.empire.annotation.InvalidRdfException;
 import io.fogsy.empire.core.empire.annotation.RdfGenerator;

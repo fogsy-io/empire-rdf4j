@@ -66,6 +66,10 @@
         </dependency>
         <dependency>
             <groupId>io.fogsy</groupId>
+            <artifactId>empire-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.fogsy</groupId>
             <artifactId>empire-cp-common-utils</artifactId>
         </dependency>
         <dependency>

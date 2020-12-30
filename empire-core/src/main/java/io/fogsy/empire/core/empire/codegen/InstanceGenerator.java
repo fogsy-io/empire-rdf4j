@@ -36,7 +36,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import io.fogsy.empire.core.empire.EmpireGenerated;
 import io.fogsy.empire.core.empire.EmpireOptions;
-import io.fogsy.empire.core.empire.SupportsRdfId;
+import io.fogsy.empire.api.SupportsRdfId;
 import io.fogsy.empire.core.empire.util.BeanReflectUtil;
 import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
 import sun.reflect.generics.reflectiveObjects.WildcardTypeImpl;
@@ -143,12 +143,12 @@ public final class InstanceGenerator {
 		aClass.addField(aIdField, CtField.Initializer.byExpr("new io.fogsy.empire.core.empire.annotation.SupportsRdfIdImpl();"));
 		
 		if (!hasMethod(aClass, "getRdfId")) {
-			aClass.addMethod(CtNewMethod.make("public io.fogsy.empire.core.empire.SupportsRdfId.RdfKey getRdfId() { return supportsId.getRdfId(); } " +
+			aClass.addMethod(CtNewMethod.make("public io.fogsy.empire.api.SupportsRdfId.RdfKey getRdfId() { return supportsId.getRdfId(); } " +
 							"", aClass));
 		}
 
 		if (!hasMethod(aClass, "setRdfId")) {
-			aClass.addMethod(CtNewMethod.make("public void setRdfId(io.fogsy.empire.core.empire.SupportsRdfId.RdfKey theURI) { supportsId.setRdfId(theURI); } ", aClass));
+			aClass.addMethod(CtNewMethod.make("public void setRdfId(io.fogsy.empire.api.SupportsRdfId.RdfKey theURI) { supportsId.setRdfId(theURI); } ", aClass));
 		}		
 		
 		generateMethods(theInterface, aPool, aClass);
@@ -177,9 +177,9 @@ public final class InstanceGenerator {
 		String equalsMethodBody = 
 		  "public boolean equals(Object theObj) {\n" +
 		  "  if (theObj == this) return true;\n" +
-		  "  if (!(theObj instanceof io.fogsy.empire.core.empire.SupportsRdfId)) return false;\n" +
+		  "  if (!(theObj instanceof io.fogsy.empire.api.SupportsRdfId)) return false;\n" +
 		  "  if (!(mInterfaceClass.isAssignableFrom(theObj.getClass()))) return false;\n" +
-		  "  return getRdfId().equals( ((io.fogsy.empire.core.empire.SupportsRdfId) theObj).getRdfId()) && super.equals(theObj);\n" +
+		  "  return getRdfId().equals( ((io.fogsy.empire.api.SupportsRdfId) theObj).getRdfId()) && super.equals(theObj);\n" +
 		  "}\n";
 		
 		aClass.addMethod(CtNewMethod.make(equalsMethodBody, aClass));

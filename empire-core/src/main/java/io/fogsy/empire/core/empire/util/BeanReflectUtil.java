@@ -20,7 +20,7 @@ import io.fogsy.empire.core.empire.annotation.InvalidRdfException;
 import io.fogsy.empire.annotations.RdfId;
 import io.fogsy.empire.annotations.RdfsClass;
 import io.fogsy.empire.core.empire.EmpireOptions;
-import io.fogsy.empire.core.empire.SupportsRdfId;
+import io.fogsy.empire.api.SupportsRdfId;
 import io.fogsy.empire.core.empire.EmpireGenerated;
 import io.fogsy.empire.cp.common.utils.util.PrefixMapping;
 
